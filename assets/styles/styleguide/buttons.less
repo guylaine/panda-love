@@ -1,0 +1,88 @@
+.btn-reset() {
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+  &:focus {
+    border-image: none;
+    outline: none;
+  }
+}
+
+.btn {
+  z-index: 1;
+  position: relative;
+
+  &:hover {
+    color:#fff;
+  }
+
+  &::before{
+    position: absolute;
+    content: "";
+    top: 0; bottom: 0;
+    right: 0; left: 0;
+    z-index: -1;
+    transition: opacity 0.5s linear;
+    opacity:0;
+  }
+
+  &:hover::before {
+    opacity:1;
+  }
+}
+
+.btn-special {
+  color:white;
+}
+
+.btn-sexy {
+  background-image: linear-gradient(90deg, #01e12a 0%, #a9ed34 100%);
+
+  &::before{
+    background-image: linear-gradient(90deg, #01e12a 0%, #a9ed34 50%);
+  }
+}
+
+.btn-like {
+  background: linear-gradient(90deg, #ff0061 0%, #ff38d2 100%);
+
+  &::before{
+    background-image: linear-gradient(90deg, #ff0061 0%, #ff38d2 50%);
+  }
+}
+
+.btn-amazing {
+  background: linear-gradient(90deg, #0c5cff 0%, #1fccff 100%);
+
+  &::before{
+    background-image: linear-gradient(90deg, #0c5cff 0%, #1fccff 50%);
+  }
+}
+
+.btn-miss {
+  background: linear-gradient(90deg, #820bf0 0%, #ba17ff 100%);
+
+  &::before{
+    background-image: linear-gradient(90deg, #820bf0 0%, #ba17ff 50%);
+  }
+}
+
+.btn-snack {
+  background: linear-gradient(90deg, #f07100 0%, #ffc30f 100%);
+
+  &::before{
+    background-image: linear-gradient(90deg, #f07100 0%, #ffc30f 50%);
+  }
+}
+
+.btn-night {
+  background: linear-gradient(90deg, #222222 0%, #3d3d3d 100%);
+
+  &::before{
+    background-image: linear-gradient(90deg, #222222 0%, #3d3d3d 50%);
+  }
+}

@@ -1,0 +1,57 @@
+<div id="edit-profile" v-cloak>
+  <div class="container">
+    <p class="text-center"><img class="d-inline" src="/images/panda-love.png" alt="Panda Love" /></p>
+    <h1>Edit Lamp Options</h1>
+    <p class="clear">Click on the Sync button to sync your bridge. Don't forget to hit the Bridge button before the sync.</p>
+    <hr/>
+    <ajax-form action="updateLamp" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+    <div class="row mb-3">
+      <div class="col-sm-6">
+        <h4>Panda Lamp</h4>
+      </div>
+      <div class="col-sm-6 text-right">
+        <a class="btn btn-outline-info" href="#">Sync</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+          <div class="form-group">
+            <label for="bridge-host">Bridge Host</label>
+            <input class="form-control" id="bridge-host" name="bridge-host" type="text"  :class="[formErrors.bridgeHost ? 'is-invalid' : '']" v-model.trim="formData.bridgeHost" placeholder="127.0.0.1" autocomplete="host" focus-first>
+             {{me.bridgeHost}}
+            <div class="invalid-feedback" v-if="formErrors.bridgeHost">Please enter your bridge host.</div>
+          </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="form-group">
+            <label for="bridge-username">Bridge Username</label>
+            <input class="form-control" id="bridge-username" name="bridge-username" type="text"  :class="[formErrors.bridgeUsername ? 'is-invalid' : '']" v-model.trim="formData.bridgeUsername" placeholder="pO6R1HIV21MpGGzoBHHJ3GYoQIVEOC818Abp2Ayj">
+             {{me.bridgeUsername}}
+            <div class="invalid-feedback" v-if="formErrors.bridgeUsername">Please enter your bridge Username (Unique ID).</div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="light-id">Associated Light ID</label>
+            <input class="form-control" id="light-id" name="light-id" type="text"  :class="[formErrors.lightID ? 'is-invalid' : '']" v-model.trim="formData.lightID" placeholder="8" >
+             {{me.lightID}}
+            <div class="invalid-feedback" v-if="formErrors.lightID">Please enter your light ID.</div>
+          </div>
+      </div>
+      </div>
+     <div class="row">
+        <div class="col-sm-6">
+          <p class="text-danger" v-if="cloudError">An error occured while processing your request. Please check your information and try again, or <a href="/contact">contact support</a> if the error persists.</p>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group text-right">
+            <a class="btn btn-outline-info" href="/account">Cancel</a>
+            <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Save</ajax-button>
+          </div>
+        </div>
+      </div>
+    </ajax-form>
+  </div>
+</div>
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
